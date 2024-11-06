@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Manrope";
+}
+.container__person{
+    max-width: 1348px;
+    width: 100%;
+    padding: 0 16px;
+    margin: 0 auto;
+}
+.container__two{
+    max-width: 1746px;
+    width: 100%;
+    padding: 0 16px;
+    margin: 0 auto;
+}
+a{
+    color: inherit;
+}
