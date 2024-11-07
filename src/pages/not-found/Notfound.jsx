@@ -1,9 +1,10 @@
 import React from 'react'
+import Not from '../../components/NotFound/Not'
 
 const Notfound = () => {
   return (
-    <div>Notfound</div>
+    <Not/>
   )
 }
 
-export default Notfound
+export default React.memo(Notfound)

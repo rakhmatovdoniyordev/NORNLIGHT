@@ -1,9 +1,12 @@
 import React from 'react'
+import Garanty from "../../components/Garanty/Garanty"
 
 const Garant = () => {
   return (
-    <div>Garant</div>
+    <>
+      <Garanty/>
+    </>
   )
 }
 
-export default Garant
+export default React.memo(Garant)

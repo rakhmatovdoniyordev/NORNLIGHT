@@ -1,9 +1,12 @@
 import React from 'react'
+import Returnitem from '../../components/Return/Returnitem'
 
 const Return = () => {
   return (
-    <div>Return</div>
+    <>
+        <Returnitem/>
+    </>
   )
 }
 
-export default Return
+export default React.memo(Return)

@@ -9,4 +9,4 @@ const Shipping = () => {
   )
 }
 
-export default Shipping
+export default React.memo(Shipping)

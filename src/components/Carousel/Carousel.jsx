@@ -20,9 +20,9 @@ const Carousel = () => {
               className="mySwiper"
             >
               <SwiperSlide>
-                <div className='w-full bg-[#F2F2F2] flex gap-[200px] items-center justify-center rounded-[50px] pb-10'>
+                <div className='w-full bg-[#F2F2F2] flex gap-[200px] items-center justify-center rounded-[50px] pb-10 max-[1040px]:flex-wrap-reverse max-[1040px]:gap-[50px] max-[600px]:gap-7'>
                   <div>
-                    <h2 className='text-[64px] max-w-[588px] font-bold'>Скидка 15% <br />на все подвесные светильники <br /><span className='py-3 px-6 rounded-[50px] bg-[#454545] text-white'>до 5 февраля</span></h2>
+                    <h2 className='text-[64px] max-w-[588px] font-bold max-[800px]:text-[46px] max-[660px]:text-[32px] max-[450px]:text-[28px]'>Скидка 15% <br />на все подвесные светильники <br /><span className='py-3 px-6 rounded-[50px] bg-[#454545] text-white max-[660px]:py-[6px]'>до 5 февраля</span></h2>
                   </div>
                   <div>
                     <img src={img1} alt="" />
@@ -43,4 +43,4 @@ const Carousel = () => {
   )
 }
 
-export default Carousel
+export default React.memo(Carousel)

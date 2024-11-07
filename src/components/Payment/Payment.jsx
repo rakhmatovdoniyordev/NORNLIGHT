@@ -12,12 +12,12 @@ const Payment = () => {
                     </NavLink>
                     <span className='flex items-center gap-3 text-[#000] font-semibold cursor-pointer'><FaAngleRight/> Доставка и оплата</span>
                 </div>
-                <div className='flex justify-between gap-[341px]'>
+                <div className='flex justify-between gap-[341px] max-[990px]:gap-[100px] max-[750px]:flex-wrap max-[750px]:gap-[40px] max-[600px]:gap-[32px]'>
                     <div>
-                        <h1 className='text-[64px] font-bold'>Доставка и оплата</h1>
+                        <h1 className='text-[64px] font-bold max-[990px]:text-[48px] max-[750px]:text-[36px] max-[600px]:text-[28px]'>Доставка и оплата</h1>
                     </div>
-                    <div className='flex flex-col gap-16'>
-                        <div className='flex flex-col gap-7'>
+                    <div className='flex flex-col gap-16 max-[750px]:gap-9'>
+                        <div className='flex flex-col gap-7 max-[750px]:gap-4'>
                             <h2 className='text-[24px] font-semibold'>Доставка</h2>
                             <p className='text-[20px]'>Мы осуществляем доставку со склада по Москве и Московской области собственной курьерской службой. Транспортными компаниями нашу продукцию мы доставляем по всей территории РФ, а так же по всем странам СНГ. <span className='text-[#2F4DA3]'>Сроки доставки: 4—6 недель</span></p>
                         </div>
@@ -40,9 +40,8 @@ const Payment = () => {
                     src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d4047.0956477138607!2d69.20762732989965!3d41.220654787475105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2s!4v1730894537591!5m2!1sru!2s"
                     width="100%"
                     height="672"
-                    style={{ border: 0 }}
+                    style={{ border: 0, borderRadius: 15 }}
                     allowFullScreen=""
-                    loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     title="Google Map Embed">
                     </iframe>
@@ -53,4 +52,4 @@ const Payment = () => {
   )
 }
 
-export default Payment
+export default React.memo(Payment)
