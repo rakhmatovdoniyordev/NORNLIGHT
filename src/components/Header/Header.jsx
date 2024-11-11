@@ -63,7 +63,7 @@ const Header = () => {
                 </div>
             </nav>
         </div>
-                <div onClick={()=> setMenu(!menu)} className={`w-screen h-screen  fixed top-[-100%] text-center z-50 bg-[#45454549] duration-700 ${menu ? "top-[80px]" : "top-[-100%]"}`}>
+                <div onClick={()=> setMenu(!menu)} className={`w-screen h-screen  fixed top-[-120%] text-center z-50 bg-[#45454549] duration-700 ${menu ? "top-[81px]" : "top-[-120%]"}`}>
                     <div className='bg-white'>
                         <div className='h-8 w-full flex justify-end pr-4'>
                             <MdOutlineClose className='text-[22px]' onClick={()=> setMenu(!menu)}/>
