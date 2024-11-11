@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Payment from "../../components/Payment/Payment"
 
 const Shipping = () => {
+  useEffect(()=> {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <>
       <Payment/>

@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaAngleRight } from 'react-icons/fa'
 import { NavLink } from 'react-router-dom'
 import Blogitem from '../../components/Blog/Blogitem'
 
 const Blog = () => {
+  useEffect(()=> {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <section className='mt-24'>
       <div className="container__person">

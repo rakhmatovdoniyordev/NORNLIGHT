@@ -6,6 +6,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Manrope";
+    scroll-behavior: smooth;
 }
 .container__person{
     max-width: 1348px;
