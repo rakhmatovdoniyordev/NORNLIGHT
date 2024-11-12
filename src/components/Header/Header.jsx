@@ -11,6 +11,7 @@ import { MdOutlineClose } from "react-icons/md";
 
 const Header = () => {
     const [menu, setMenu] = useState(false)
+
   return (
     <header className='bg-white max-[990px]:mb-[190px]'>
         <div className="container__person">
@@ -36,7 +37,7 @@ const Header = () => {
                     </li>
                 </ul>
                 <div className='flex gap-6 items-center'>
-                    <p className='font-semibold text-[#474747]'>8 (800) 890-46-56</p>
+                    <a href='tel: 8 (800) 890-46-56' className='font-semibold text-[#474747]'>8 (800) 890-46-56</a>
                     <p className='font-semibold text-[#A2A2A2] text-[14px]'>Заказать звонок</p>
                 </div>
             </div>
@@ -46,7 +47,7 @@ const Header = () => {
                 </div>
                 <div className='max-[990px]:flex-1 flex items-center'>
                     <NavLink to={"/"}>
-                        <img src={logo} alt="" className='max-[350px]:w-[160px] max-[990px]:mt-1 object-contain'/>
+                        <img src={logo} alt="" className='max-[350px]:w-[160px] max-[990px]:mt-1 object-contain select-none'/>
                     </NavLink>
                 </div>
                 <div className='max-[990px]:hidden'>
@@ -63,7 +64,7 @@ const Header = () => {
                 </div>
             </nav>
         </div>
-                <div onClick={()=> setMenu(!menu)} className={`w-screen h-screen  fixed top-[-120%] text-center z-50 bg-[#45454549] duration-700 ${menu ? "top-[81px]" : "top-[-120%]"}`}>
+                <div onClick={()=> setMenu(!menu)} className={`w-screen h-screen  fixed top-[-120%] text-center z-50 bg-[#45454549] duration-700 ${menu ? "top-[77px]" : "top-[-120%]"}`}>
                     <div className='bg-white'>
                         <div className='h-8 w-full flex justify-end pr-4'>
                             <MdOutlineClose className='text-[22px]' onClick={()=> setMenu(!menu)}/>

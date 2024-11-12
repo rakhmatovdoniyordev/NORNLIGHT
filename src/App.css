@@ -23,6 +23,9 @@
 a{
     color: inherit;
 }
+img{
+    user-select: none;
+}
 
 .navbar__link.active{
     color: black;

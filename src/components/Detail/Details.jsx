@@ -9,7 +9,7 @@ const Details = () => {
     const {data} = useFetch(`/products/${id}`)
     const [count, setCount] = useState(1);
     const increment = () => setCount(count + 1);
-    const decrement = () => setCount(count => 0 ? count - 1 : 0);
+    const decrement = () => setCount(count > 0 ? count - 1 : 0);
     useEffect(()=>{
         window.scrollTo(0, 0)
     }, [])
@@ -67,7 +67,7 @@ const Details = () => {
                         <p className='text-[#4c4c4c8f]'>{data?.country}</p>
                     </div>
                     <div className='w-full h-16 flex justify-between border items-center px-6'>
-                        <h4 className='font-medium'>категории</h4>
+                        <h4 className='font-medium'>Kатегории</h4>
                         <p className='text-[#4c4c4c8f]'>{data?.category}</p>
                     </div>
                 </div>
