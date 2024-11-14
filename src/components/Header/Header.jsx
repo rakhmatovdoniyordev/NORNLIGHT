@@ -8,10 +8,11 @@ import { TbAntennaBars5 } from "react-icons/tb";
 import { LiaShoppingCartSolid } from "react-icons/lia";
 import { BiMenuAltRight } from "react-icons/bi";
 import { MdOutlineClose } from "react-icons/md";
+import { useStateValue } from '../../context';
 
 const Header = () => {
     const [menu, setMenu] = useState(false)
-
+    const [state, dispatch] = useStateValue()
   return (
     <header className='bg-white max-[990px]:mb-[190px]'>
         <div className="container__person">
@@ -53,19 +54,23 @@ const Header = () => {
                 <div className='max-[990px]:hidden'>
                     <a href="#" className='flex items-center gap-3 py-[14px] px-[27px] rounded-[100px] bg-[#454545] border-[1px] border-[#454545] text-white duration-500 hover:bg-white hover:text-[#454545]'><HiOutlineBars3CenterLeft className='text-[24px]'/> Каталог</a>
                 </div>
-                <form action="" className='flex p-4 items-center border-[1px] border-[#454545] rounded-[100px] flex-1 max-[990px]:absolute max-[990px]:top-[90px] max-[990px]:w-full max-[990px]:z-10'>
+                <form action="" className='flex p-4 items-center border-[1px] border-[#454545] rounded-[100px] flex-1 max-[990px]:absolute max-[990px]:top-[80px] max-[990px]:w-full max-[990px]:z-10 max-[600px]:top-[70px]'>
                     <input type="search" placeholder='Поиск по товарам' className='border-none indent-3 flex-1 outline-none bg-transparent'/>
                     <a href="#"><IoSearch className='text-[26px]'/></a>
                 </form>
                 <div className='flex gap-[31px] items-center max-[600px]:gap-3 max-[600px]:items-center max-[600px]:mt-1'>
-                    <a href="#" className='flex flex-col items-center gap-2 text-[14px] font-semibold max-[600px]:text-[0px]'><FaRegHeart className='text-[23px] max-[600px]:text-[20px]'/> Избранное</a>
+                    <NavLink to={"/favorites"} href="#" className='flex flex-col items-center gap-2 text-[14px] font-semibold max-[600px]:text-[0px] relative'>
+                        <FaRegHeart className='text-[23px] max-[600px]:text-[20px]'/> Избранное <p className='absolute right-1 top-[-10px] w-4 h-4 flex justify-center items-center rounded-[50%] bg-red-500 text-white text-[10px] max-[600px]:right-[-6px]'>
+                        {state.wishlist.length > 9 ? "9+" : state.wishlist.length}
+                        </p>
+                    </NavLink>
                     <a href="#" className='flex flex-col items-center gap-2 text-[14px] font-semibold max-[990px]:hidden'><TbAntennaBars5 className='text-[24px]'/> Сравнение</a>
                     <a href="#" className='flex flex-col items-center gap-2 text-[14px] font-semibold max-[600px]:text-[0px]'><LiaShoppingCartSolid className='text-[24px] max-[600px]:text-[24px]'/> Корзина</a>
                 </div>
             </nav>
         </div>
-                <div onClick={()=> setMenu(!menu)} className={`w-screen h-screen  fixed top-[-120%] text-center z-50 bg-[#45454549] duration-700 ${menu ? "top-[77px]" : "top-[-120%]"}`}>
-                    <div className='bg-white'>
+                <div onClick={()=> setMenu(!menu)} className={`w-screen h-screen  fixed top-[-120%] text-center z-50 bg-[#45454549] duration-700 ${menu ? "top-[70px] max-[600px]:top-[60px]" : "top-[-120%]"}`}>
+                    <div className='bg-white pt-5'>
                         <div className='h-8 w-full flex justify-end pr-4'>
                             <MdOutlineClose className='text-[22px]' onClick={()=> setMenu(!menu)}/>
                         </div>

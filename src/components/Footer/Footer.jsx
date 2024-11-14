@@ -7,11 +7,11 @@ import { Link, NavLink } from 'react-router-dom'
 
 const Footer = () => {
   const content = footerItems?.map((item)=> (
-    <div>
+    <div key={item.id}>
       <p className='mb-8 text-[24px] font-bold'>{item.title}</p>
       <div className='flex flex-col gap-[27px] text-[#A2A2A2]'>
-        {item.items?.map((child)=> (
-          <NavLink>{child}</NavLink>
+        {item.items?.map((child, inx)=> (
+          <NavLink key={inx}>{child}</NavLink>
         ))}
       </div>
     </div>

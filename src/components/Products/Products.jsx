@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { FaRegHeart } from 'react-icons/fa'
+import { FaRegHeart, FaHeart  } from 'react-icons/fa'
 import { LiaShoppingCartSolid } from 'react-icons/lia'
 import { MdOutlineClose } from 'react-icons/md'
 import { VscArrowRight } from 'react-icons/vsc'
 import { Link, NavLink } from 'react-router-dom'
-import { useFetch } from '../../hooks/useFetch'
 import Modal from '../Modal/Modal'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -12,11 +11,13 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Navigation, Pagination } from 'swiper/modules';
 import './style.css'
+import { useStateValue } from '../../context'
 
-const Products = () => {
-    const {data} = useFetch("products")
+const Products = ({data, title, btn}) => {
     const [show, setShow] = useState(null)
     const [isNavigationEnabled, setIsNavigationEnabled] = useState(window.innerWidth > 650);
+
+    const [state, dispatch] = useStateValue()
 
     useEffect(() => {
         const handleResize = () => {
@@ -30,7 +31,14 @@ const Products = () => {
         <div key={product.id} className="flex flex-col">
             <div className='text-center relative'>
                     <img src={product.url} alt="" className='w-[200px] h-[200px]       mx-auto max-[550px]:w-[150px] max-[550px]:h-[150px] select-none cursor-pointer' onClick={()=> setShow(product)}/>
-                <FaRegHeart className='absolute top-0 right-7 text-2xl max-[550px]:text-[18px]'/>
+                    <div className='absolute top-0 right-7 cursor-pointer' onClick={()=> dispatch({type: "ADD__WISHLIST", payload: product})}>
+                        {
+                            state.wishlist?.some(pro => pro.id === product.id) ?
+                            <FaHeart className='text-[#454545] text-2xl max-[550px]:text-[18px]'/>
+                            :
+                            <FaRegHeart  className='text-2xl max-[550px]:text-[18px]'/>
+                        }
+                    </div>
             </div>
             <div className='p-7 flex flex-col gap-6'>
                 <div className='min-h-16 max-[550px]:min-h-10'>
@@ -56,8 +64,8 @@ const Products = () => {
     <section className='mb-20'>
         <div className="container__person">
             <div className='flex justify-between items-center mb-10'>
-                <h2 className={`text-[40px] font-bold max-[800px]:text-[36px] max-[600px]:text-[28px] mb-9`}>Популярные товары</h2>
-                <NavLink to={"/blog"} className={`py-[14px] px-[47px] rounded-[100px] border-[1px] border-[#454545] flex items-center gap-3 duration-500 hover:bg-[#454545] hover:text-white  max-[550px]:hidden`}>Все товары <VscArrowRight/></NavLink>
+                <h2 className={`text-[40px] font-bold max-[800px]:text-[36px] max-[600px]:text-[28px] mb-9`}>{title}</h2>
+                <NavLink to={"/blog"} className={`py-[14px] px-[47px] rounded-[100px] border-[1px] border-[#454545] flex items-center gap-3 duration-500 hover:bg-[#454545] hover:text-white  max-[550px]:hidden ${btn}`}>Все товары <VscArrowRight/></NavLink>
             </div>
             <div className='grid grid-cols-4 gap-2 max-[1050px]:grid-cols-3 max-[800px]:grid-cols-2 max-[550px]:grid-cols-1'>
                 {items}

@@ -17,4 +17,4 @@ const Modal = ({children, close}) => {
   )
 }
 
-export default Modal
+export default React.memo(Modal)

@@ -10,6 +10,7 @@ import Layout from '../pages/layout/Layout';
 import Notfound from '../pages/not-found/Notfound';
 import Return from '../pages/return/Return';
 import Shipping from '../pages/shipping/Shipping';
+import Favorites from '../pages/favorites/Favorites'
 
 const Router = () => {
   return (
@@ -24,6 +25,7 @@ const Router = () => {
           <Route path="/contacts" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
           <Route path='/products/:id' element={<Detail/>}/>
+          <Route path='/favorites' element={<Favorites/>}/>
           <Route path="*" element={<Notfound />} />
         </Route>
       </Routes>
