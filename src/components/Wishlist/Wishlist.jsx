@@ -16,8 +16,8 @@ const Wishlist = () => {
                         <img src={wishlist} alt="" />
                     </div>
                     <div className='flex flex-col items-center gap-4'>
-                        <h3 className='text-3xl font-semibold'>Добавьте свой любимый</h3>
-                        <p className='text-lg'>Нажмите на символ ♡ на товаре.</p>
+                        <h3 className='text-3xl font-semibold max-[400px]:text-[20px]'>Добавьте свой любимый</h3>
+                        <p className='text-lg max-[400px]:text-[14px]'>Нажмите на символ ♡ на товаре.</p>
                     </div>
                     <div className='flex justify-center mt-9'>
                         <Link to={"/"} className='px-7 py-2 border rounded-[50px] bg-[#454545] text-white duration-500 hover:bg-white hover:text-black'>Главная</Link>
