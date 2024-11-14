@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 
 const Wishlist = () => {
     const [state, dispatch] = useStateValue()
-    console.log(state);
   return (
     <section className='mt-24'>
         <div className="container__person">
