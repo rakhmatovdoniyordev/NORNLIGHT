@@ -51,7 +51,7 @@ const Products = ({data, title, btn}) => {
                         <p className='line-through text-[12px] font-medium text-[#9F9F9F] max-[550px]:text-[11px]'>{product.previousprice.brm("int", 0)}</p>
                         <strong className='text-[20px] font-bold max-[550px]:text-[16px]'>{product.discountprice.brm("int", 0)}</strong>
                     </div>
-                    <div className='group py-[9px] px-5 border duration-500 rounded-[100px] bg-[#454545] hover:bg-white cursor-pointer'>
+                    <div className='group py-[9px] px-5 border duration-500 rounded-[100px] bg-[#454545] hover:bg-white cursor-pointer' onClick={()=> dispatch({type: "ADD__CART", payload: product})}>
                         <NavLink>
                             <LiaShoppingCartSolid className='text-white text-[28px] group-hover:text-black max-[550px]:text-[20px]'/>
                         </NavLink>

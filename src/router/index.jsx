@@ -11,6 +11,7 @@ import Notfound from '../pages/not-found/Notfound';
 import Return from '../pages/return/Return';
 import Shipping from '../pages/shipping/Shipping';
 import Favorites from '../pages/favorites/Favorites'
+import Basket from '../pages/basket/Basket';
 
 const Router = () => {
   return (
@@ -26,6 +27,7 @@ const Router = () => {
           <Route path="/blog" element={<Blog />} />
           <Route path='/products/:id' element={<Detail/>}/>
           <Route path='/favorites' element={<Favorites/>}/>
+          <Route path='/basket' element={<Basket/>}/>
           <Route path="*" element={<Notfound />} />
         </Route>
       </Routes>

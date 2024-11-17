@@ -31,4 +31,4 @@ const Wishlist = () => {
   )
 }
 
-export default Wishlist
+export default React.memo(Wishlist)
