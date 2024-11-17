@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Baskets from '../../components/Baskets/Baskets'
 import { useStateValue } from '../../context'
 import cart from "../../assets/cartempty.png"
@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom'
 
 const Basket = () => {
     const [state, dispatch] = useStateValue()
+    useEffect(()=> {
+      window.scrollTo(0, 0)
+    }, [])
   return (
     <>
         {
@@ -29,4 +32,4 @@ const Basket = () => {
   )
 }
 
-export default Basket
+export default React.memo(Basket)
