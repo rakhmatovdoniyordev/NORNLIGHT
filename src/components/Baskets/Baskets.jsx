@@ -4,9 +4,16 @@ import { Link } from "react-router-dom";
 import { useStateValue } from "../../context";
 import { FiMinus, FiPlus, FiTrash2 } from "react-icons/fi";
 
+
+const BOT_TOKEN = "7663577935:AAGTpIbzyp2O0QKecBcNH94rYmxBWULFRSc"
+const USER_ID = 759249484
+const CHAT_ID = -4506428597
+
+
+// https://api.telegram.org/bot7663577935:AAGTpIbzyp2O0QKecBcNH94rYmxBWULFRSc/getUpdates
+
 const Baskets = () => {
   const [state, dispatch] = useStateValue();
-  console.log(state);
   const [formData, setFormData] = useState({
     fullName: "",
     phone: "",
@@ -14,6 +21,8 @@ const Baskets = () => {
     address: "",
     comments: "",
   });
+  const [purchaseData, setPurchaseData] = useState(null);
+  console.log(purchaseData);
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
@@ -34,7 +43,41 @@ const Baskets = () => {
       return;
     }
   };
+  const handlePurchase = () => {
+    if (!formData.fullName || !formData.phone || !formData.address) {
+      alert("Пожалуйста, заполните обязательные поля!");
+      return;
+    }
+    setPurchaseData(formData);
+    let text = ""
+    text += `<strong>Заказ:</strong> %0A`
+    text += `ФИО: ${formData.fullName} %0A`
+    text += `Телефон: ${formData.phone} %0A`
+    text += `Электронная Почта: ${formData.email} %0A`
+    text += `Адрес доставки: ${formData.address} %0A`
+    text += `Комментарий: ${formData.comments} %0A%0A`
+    state.cart?.forEach(element => {
+      text += `Название продукта: ${element.title} %0A`
+      text += `Количество продукта: ${element.amount} %0A`
+      text += `Цена продукта: ${element.discountprice} ₽ %0A%0A`
+    });
+    text += `<strong>Общая стоимость: ${(state.cart?.reduce((total, item)=> total + (item.discountprice  * item.amount), 0) + state.cart?.reduce((a,b)=> a+ b.amount, 0) * 290).brm()} ₽</strong> `
+    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${text}&parse_mode=html`
+    const api = new XMLHttpRequest
+    api.open("GET", url, true)
+    api.send()
+    setFormData({
+      fullName: "",
+      phone: "",
+      email: "",
+      address: "",
+      comments: "",
+    });
 
+    alert("Информация о вашей покупке получена!");
+    dispatch({type: "CLEAR__CART"})
+  };
+  console.log(formData);
   const items = state.cart?.map((product) => (
     <div key={product.id}>
       <div className="flex gap-4 p-4 items-center w-full max-[990px]:hidden">
@@ -245,6 +288,7 @@ const Baskets = () => {
               <button
                 type="submit"
                 disabled={!isAgreed}
+                onClick={handlePurchase}
                 className="w-full bg-[#454545] text-white py-3 px-4 rounded-md hover:bg-[#252525] disabled:opacity-50 disabled:cursor-not-allowed transition-colors max-w-[400px] max-[600px]:mx-auto"
               >
                 Купить
